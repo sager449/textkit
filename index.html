@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free online text tools — clean, format, and analyze text instantly." />
+    <meta name="keywords" content="text tools, text cleaner, word counter, remove spaces, case converter" />
+    <title>TextKit — Free Online Text Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="TextKit home">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <button class="settings-btn" id="settings-btn" aria-label="Settings">
+        ⚙️
+      </button>
+    </header>
+
+    <main>
+      <section class="hero section-shell">
+        <p class="eyebrow">
+          <span class="eyebrow-dot"></span> Free · Fast · No signup
+        </p>
+        <h1>Text tools that<br /><span>just work.</span></h1>
+        <p class="hero-lede">
+          Clean, format, and analyze your text instantly — in English and Arabic.
+          No account, no upload, no waiting.
+        </p>
+      </section>
+
+      <section class="tools-section section-shell">
+        <h2 class="section-title">All Tools</h2>
+        <div class="tools-grid" id="tools-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <p>© 2026 TextKit — All tools are free</p>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Privacy</a>
+      </div>
+      </footer>
+      
+<!-- ===== Settings Modal ===== -->
+<div class="settings-modal" id="settings-modal" hidden>
+  <div class="modal-backdrop" data-close-settings></div>
+  <div class="settings-panel">
+    <button class="modal-close" type="button" data-close-settings>×</button>
+    <h3 class="settings-title">Settings</h3>
+    <p class="settings-label">Theme</p>
+    <div class="theme-options">
+      <button class="theme-btn active" data-theme="light">
+        <span class="theme-dot theme-light"></span> Light
+      </button>
+      <button class="theme-btn" data-theme="dark">
+        <span class="theme-dot theme-dark"></span> Dark
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ===== Tools Data ===== */
+  const TOOLS = [
+    {
+      id: "remove-spaces",
+      icon: "⎵",
+      name: "Remove Spaces",
+      nameAr: "إزالة المسافات",
+      desc: "Remove extra spaces from your text."
+    },
+    {
+      id: "remove-line-breaks",
+      icon: "¶",
+      name: "Remove Line Breaks",
+      nameAr: "إزالة الأسطر الفارغة",
+      desc: "Combine lines into a single paragraph."
+    },
+    {
+      id: "word-counter",
+      icon: "#",
+      name: "Word Counter",
+      nameAr: "عدّ الكلمات",
+      desc: "Count words, characters, and sentences."
+    },
+    {
+      id: "case-converter",
+      icon: "Aa",
+      name: "Case Converter",
+      nameAr: "تحويل حالة الأحرف",
+      desc: "UPPER, lower, Title Case, and more."
+    },
+    {
+      id: "remove-diacritics",
+      icon: "َ",
+      name: "Remove Diacritics",
+      nameAr: "إزالة التشكيل",
+      desc: "Remove Arabic diacritics (tashkeel)."
+    },
+    {
+      id: "remove-punctuation",
+      icon: "!",
+      name: "Remove Punctuation",
+      nameAr: "إزالة الرموز",
+      desc: "Remove all punctuation marks."
+    },
+    {
+      id: "reverse-text",
+      icon: "↔",
+      name: "Reverse Text",
+      nameAr: "عكس النص",
+      desc: "Reverse the order of characters."
+    },
+    {
+      id: "remove-duplicates",
+      icon: "≡",
+      name: "Remove Duplicate Lines",
+      nameAr: "إزالة الأسطر المكررة",
+      desc: "Remove duplicate lines from a list."
+    },
+    {
+      id: "sort-lines",
+      icon: "↕",
+      name: "Sort Lines",
+      nameAr: "ترتيب الأسطر",
+      desc: "Sort lines alphabetically A-Z or Z-A."
+    },
+    {
+      id: "text-to-slug",
+      icon: "/",
+      name: "Text to Slug",
+      nameAr: "تحويل إلى رابط",
+      desc: "Convert text to a URL-friendly slug."
+    }
+  ];
+
+  const THEME_KEY = "textkit-theme";
+
+  /* ===== Render Tools ===== */
+  const toolsGrid = document.getElementById("tools-grid");
+
+  function renderTools() {
+    toolsGrid.innerHTML = TOOLS.map((tool) => `
+      <a class="tool-card" href="tools/${tool.id}.html">
+        <div class="tool-icon">${tool.icon}</div>
+        <div class="tool-info">
+          <h3>${tool.name}</h3>
+          <p>${tool.desc}</p>
+        </div>
+        <span class="tool-arrow">→</span>
+      </a>
+    `).join("");
+  }
+  
+      /* ===== Settings ===== */
+      const settingsModal = document.getElementById("settings-modal");
+      const settingsBtn = document.getElementById("settings-btn");
+
+      settingsBtn.addEventListener("click", () => {
+        settingsModal.hidden = false;
+        document.body.classList.add("modal-open");
+      });
+
+      settingsModal.querySelectorAll("[data-close-settings]").forEach((el) => {
+        el.addEventListener("click", () => {
+          settingsModal.hidden = true;
+          document.body.classList.remove("modal-open");
+        });
+      });
+
+      /* ===== Theme ===== */
+      document.querySelectorAll(".theme-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const theme = btn.dataset.theme;
+          localStorage.setItem(THEME_KEY, theme);
+          document.documentElement.setAttribute("data-theme", theme);
+          document.body.classList.toggle("dark-mode", theme === "dark");
+          document.querySelectorAll(".theme-btn").forEach((b) =>
+            b.classList.remove("active")
+          );
+          btn.classList.add("active");
+        });
+      });
+
+      const savedTheme = localStorage.getItem(THEME_KEY) || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        document.querySelector(".theme-btn[data-theme='dark']")?.classList.add("active");
+        document.querySelector(".theme-btn[data-theme='light']")?.classList.remove("active");
+      }
+
+      /* ===== ESC closes ===== */
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          settingsModal.hidden = true;
+          document.body.classList.remove("modal-open");
+        }
+      });
+
+      /* ===== Init ===== */
+      renderTools();
+    </script>
+  </body>
+</html>

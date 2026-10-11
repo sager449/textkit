@@ -247,3 +247,45 @@ body.dark-mode .tool-textarea {
     font-size: 22px;
   }
   }
+
+/* ===== SEO Content ===== */
+.tool-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.tool-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 40px 0 14px;
+  color: var(--ink);
+}
+
+.tool-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  color: var(--ink);
+}
+
+.tool-content p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.tool-content ol, .tool-content ul {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--muted);
+  padding-left: 22px;
+  margin: 0 0 14px;
+}
+
+.tool-content strong {
+  color: var(--ink);
+  font-weight: 700;
+   }

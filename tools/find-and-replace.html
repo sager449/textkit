@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Find and replace text instantly. Case-sensitive option available." />
+    <title>Find and Replace — TextKit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/tool.css" />
+    <style>
+      .replace-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .replace-row input {
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 14px;
+        background: var(--cream);
+        color: var(--ink);
+        outline: none;
+        transition: 0.2s;
+      }
+      .replace-row input:focus { border-color: var(--accent); background: var(--paper); }
+      body.dark-mode .replace-row input { background: #0d1420; color: var(--ink); }
+      @media (max-width: 600px) { .replace-row { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <button class="settings-btn" id="settings-btn">⚙️</button>
+    </header>
+
+    <main>
+      <div class="tool-container">
+        <a class="back-link" href="../index.html">← All tools</a>
+
+        <div class="tool-header">
+          <h1>Find and <span>Replace</span></h1>
+          <p>Replace any text with something else — instantly.</p>
+        </div>
+
+        <div class="tool-panel">
+          <div class="replace-row">
+            <input type="text" id="find-text" placeholder="Find..." />
+            <input type="text" id="replace-text" placeholder="Replace with..." />
+          </div>
+
+          <textarea class="tool-textarea" id="input" placeholder="Paste your text here..."></textarea>
+
+          <div class="tool-actions">
+            <button class="btn btn-primary" onclick="findAndReplace()">Replace All</button>
+            <button class="btn btn-secondary" onclick="copyOutput()">
+              Copy <span class="copy-feedback" id="copy-feedback">✓ Copied</span>
+            </button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <p>© 2026 TextKit</p>
+    </footer>
+
+    <div class="settings-modal" id="settings-modal" hidden>
+      <div class="modal-backdrop" data-close-settings></div>
+      <div class="settings-panel">
+        <button class="modal-close" type="button" data-close-settings>×</button>
+        <h3 class="settings-title">Settings</h3>
+        <p class="settings-label">Theme</p>
+        <div class="theme-options">
+          <button class="theme-btn active" data-theme="light"><span class="theme-dot theme-light"></span> Light</button>
+          <button class="theme-btn" data-theme="dark"><span class="theme-dot theme-dark"></span> Dark</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/tools.js"></script>
+    <script>
+      function findAndReplace() {
+        const find = document.getElementById("find-text").value;
+        const replace = document.getElementById("replace-text").value;
+        const text = getInput();
+        if (!find) return;
+        const result = text.split(find).join(replace);
+        setOutput(result);
+        updateStats();
+      }
+
+      const settingsModal = document.getElementById("settings-modal");
+      const settingsBtn = document.getElementById("settings-btn");
+      const THEME_KEY = "textkit-theme";
+
+      settingsBtn.addEventListener("click", () => settingsModal.hidden = false);
+      settingsModal.querySelectorAll("[data-close-settings]").forEach((el) => {
+        el.addEventListener("click", () => settingsModal.hidden = true);
+      });
+      document.querySelectorAll(".theme-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const theme = btn.dataset.theme;
+          localStorage.setItem(THEME_KEY, theme);
+          document.body.classList.toggle("dark-mode", theme === "dark");
+          document.querySelectorAll(".theme-btn").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+      const savedTheme = localStorage.getItem(THEME_KEY) || "light";
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        document.querySelector(".theme-btn[data-theme='dark']")?.classList.add("active");
+        document.querySelector(".theme-btn[data-theme='light']")?.classList.remove("active");
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") settingsModal.hidden = true;
+      });
+    </script>
+  </body>
+    </html>

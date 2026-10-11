@@ -128,31 +128,40 @@
       function encodeBase64() {
         const text = getInput();
         try {
-          const bytes = new TextEncoder().encode(text);
-          let binary = "";
-          bytes.forEach((b) => (binary += String.fromCharCode(b)));
-          setOutput(btoa(binary));
+          // UTF-8 safe encoding
+          const utf8Bytes = new TextEncoder().encode(text);
+          let binaryString = "";
+          for (let i = 0; i < utf8Bytes.length; i++) {
+            binaryString += String.fromCharCode(utf8Bytes[i]);
+          }
+          const base64 = btoa(binaryString);
+          setOutput(base64);
         } catch (e) {
-          setOutput("Error: " + e.message);
+          setOutput("Error encoding: " + e.message);
         }
         updateStats();
       }
 
       function decodeBase64() {
         let text = getInput().trim();
-        // Remove all whitespace
-        text = text.replace(/\s/g, "");
+        // Remove all whitespace (spaces, tabs, newlines)
+        text = text.replace(/[\s\r\n]+/g, "");
+        // Remove any non-Base64 characters
+        text = text.replace(/[^A-Za-z0-9+/=]/g, "");
         // Add padding if missing
         while (text.length % 4 !== 0) {
           text += "=";
         }
         try {
-          const binary = atob(text);
-          const bytes = new Uint8Array(binary.length);
-          for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-          setOutput(new TextDecoder().decode(bytes));
+          const binaryString = atob(text);
+          const bytes = new Uint8Array(binaryString.length);
+          for (let i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+          }
+          const decoded = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+          setOutput(decoded);
         } catch (e) {
-          setOutput("Error: Invalid Base64 text. Please check the text is properly encoded.");
+          setOutput("Error: Invalid Base64 text. Make sure you're pasting a valid Base64 string.");
         }
         updateStats();
       }
@@ -185,4 +194,4 @@
       });
     </script>
   </body>
-  </html>
+          </html>

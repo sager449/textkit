@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Encode and decode Base64 text instantly. Free online tool." />
     <title>Base64 Encode / Decode — TextKit</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta name="theme-color" content="#000000">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -54,6 +56,46 @@
           </div>
         </div>
       </div>
+
+      <!-- SEO Content -->
+      <section class="tool-content">
+        <h2>What is Base64?</h2>
+        <p>
+          Base64 is a method of encoding binary data (like images, files, or text) into a text format made of 64 safe characters — A-Z, a-z, 0-9, +, and /. It's widely used in web development, email attachments, and APIs.
+        </p>
+        <p>
+          Encoding your text in Base64 is useful when you need to safely transmit data through systems that only support plain text.
+        </p>
+
+        <h2>How to use this tool</h2>
+        <ol>
+          <li>Type or paste your text into the box above.</li>
+          <li>Click <strong>Encode → Base64</strong> to convert to Base64.</li>
+          <li>Click <strong>Decode ← Base64</strong> to turn Base64 back into readable text.</li>
+          <li>Use <strong>Copy</strong> to copy the result.</li>
+        </ol>
+
+        <h2>Why use our Base64 tool?</h2>
+        <ul>
+          <li><strong>Instant</strong> — no waiting, no button delays</li>
+          <li><strong>Unicode support</strong> — works with Arabic, Emoji, and other characters</li>
+          <li><strong>Private</strong> — everything runs in your browser</li>
+          <li><strong>Free</strong> — no signup, no limit</li>
+        </ul>
+
+        <h2>FAQ</h2>
+        <h3>Is Base64 encryption?</h3>
+        <p>No. Base64 is <strong>encoding</strong>, not encryption. Anyone can decode Base64 back to the original text. Never use it to protect sensitive data.</p>
+
+        <h3>Does it work with Arabic text?</h3>
+        <p>Yes. Our tool uses UTF-8 encoding, so Arabic, Emoji, and other special characters work perfectly.</p>
+
+        <h3>What is Base64 used for?</h3>
+        <p>Common uses: encoding images in CSS/HTML, email attachments (MIME), API authentication, and storing binary data in JSON.</p>
+
+        <h3>Is my text safe?</h3>
+        <p>Yes. All encoding and decoding happens locally in your browser. Nothing is sent to any server.</p>
+      </section>
     </main>
 
     <footer class="site-footer section-shell">
@@ -62,6 +104,10 @@
         <span class="brand-name">Text<em>Kit</em></span>
       </a>
       <p>© 2026 TextKit</p>
+      <div class="footer-links">
+        <a href="../about.html">About</a>
+        <a href="../privacy.html">Privacy</a>
+      </div>
     </footer>
 
     <div class="settings-modal" id="settings-modal" hidden>
@@ -93,14 +139,20 @@
       }
 
       function decodeBase64() {
-        const text = getInput().trim();
+        let text = getInput().trim();
+        // Remove all whitespace
+        text = text.replace(/\s/g, "");
+        // Add padding if missing
+        while (text.length % 4 !== 0) {
+          text += "=";
+        }
         try {
           const binary = atob(text);
           const bytes = new Uint8Array(binary.length);
           for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
           setOutput(new TextDecoder().decode(bytes));
         } catch (e) {
-          setOutput("Error: Invalid Base64 text.");
+          setOutput("Error: Invalid Base64 text. Please check the text is properly encoded.");
         }
         updateStats();
       }

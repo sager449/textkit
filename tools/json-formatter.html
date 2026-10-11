@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Format, validate, and minify JSON instantly. Free online tool." />
     <title>JSON Formatter — TextKit</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <meta name="theme-color" content="#000000">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -65,6 +67,46 @@
           <p class="json-status" id="json-status"></p>
         </div>
       </div>
+
+      <!-- SEO Content -->
+      <section class="tool-content">
+        <h2>What is JSON?</h2>
+        <p>
+          JSON (JavaScript Object Notation) is a lightweight data format used to store and exchange information between web applications and servers. It's easy for humans to read and easy for machines to parse.
+        </p>
+        <p>
+          A JSON Formatter helps you organize messy JSON into a readable, indented format — or compress it into a single line for storage.
+        </p>
+
+        <h2>How to use this tool</h2>
+        <ol>
+          <li>Paste your JSON into the box above.</li>
+          <li>Click <strong>Format / Beautify</strong> to make it readable.</li>
+          <li>Click <strong>Minify</strong> to compress it into one line.</li>
+          <li>Click <strong>Validate</strong> to check for errors.</li>
+        </ol>
+
+        <h2>Why use our JSON formatter?</h2>
+        <ul>
+          <li><strong>Instant validation</strong> — see errors immediately</li>
+          <li><strong>Free</strong> — no signup, no limit</li>
+          <li><strong>Private</strong> — everything runs in your browser</li>
+          <li><strong>Beautify + Minify</strong> — both directions</li>
+        </ul>
+
+        <h2>FAQ</h2>
+        <h3>What's the difference between formatting and minifying?</h3>
+        <p><strong>Formatting</strong> adds spaces and line breaks for readability. <strong>Minifying</strong> removes them to reduce file size.</p>
+
+        <h3>Why does my JSON show as invalid?</h3>
+        <p>Common issues: trailing commas, single quotes instead of double quotes, missing brackets, or unquoted keys.</p>
+
+        <h3>Is this tool safe for sensitive data?</h3>
+        <p>Yes. All processing happens locally in your browser. Nothing is sent to any server.</p>
+
+        <h3>Does it work with large JSON files?</h3>
+        <p>Yes — up to several megabytes, depending on your browser's memory.</p>
+      </section>
     </main>
 
     <footer class="site-footer section-shell">
@@ -73,6 +115,10 @@
         <span class="brand-name">Text<em>Kit</em></span>
       </a>
       <p>© 2026 TextKit</p>
+      <div class="footer-links">
+        <a href="../about.html">About</a>
+        <a href="../privacy.html">Privacy</a>
+      </div>
     </footer>
 
     <div class="settings-modal" id="settings-modal" hidden>
@@ -96,12 +142,6 @@
         const el = statusEl();
         el.textContent = msg;
         el.className = "json-status " + (isValid ? "valid" : "invalid");
-      }
-
-      function clearStatus() {
-        const el = statusEl();
-        el.textContent = "";
-        el.className = "json-status";
       }
 
       function formatJson() {
@@ -161,4 +201,4 @@
       });
     </script>
   </body>
-</html>
+  </html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Format, validate, and minify JSON instantly. Free online tool." />
+    <title>JSON Formatter — TextKit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/tool.css" />
+    <style>
+      .json-status {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 99px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 12px;
+      }
+      .json-status.valid { background: #dce6ce; color: #5c7141; }
+      .json-status.invalid { background: #fbe9e5; color: #ad4f42; }
+      body.dark-mode .json-status.valid { background: #2a3a1f; color: #a8c09a; }
+      body.dark-mode .json-status.invalid { background: #3a1f1f; color: #e08f80; }
+      .tool-textarea { font-family: 'Courier New', monospace; }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <button class="settings-btn" id="settings-btn">⚙️</button>
+    </header>
+
+    <main>
+      <div class="tool-container">
+        <a class="back-link" href="../index.html">← All tools</a>
+
+        <div class="tool-header">
+          <h1>JSON <span>Formatter</span></h1>
+          <p>Format, validate, and minify JSON instantly.</p>
+        </div>
+
+        <div class="tool-panel">
+          <textarea class="tool-textarea" id="input" placeholder='Paste your JSON here... e.g. {"name":"John","age":30}'></textarea>
+
+          <div class="tool-actions">
+            <button class="btn btn-primary" onclick="formatJson()">Format / Beautify</button>
+            <button class="btn btn-primary" onclick="minifyJson()">Minify</button>
+            <button class="btn btn-primary" onclick="validateJson()">Validate</button>
+          </div>
+
+          <div class="tool-actions">
+            <button class="btn btn-secondary" onclick="copyOutput()">
+              Copy <span class="copy-feedback" id="copy-feedback">✓ Copied</span>
+            </button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+          </div>
+
+          <p class="json-status" id="json-status"></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <p>© 2026 TextKit</p>
+    </footer>
+
+    <div class="settings-modal" id="settings-modal" hidden>
+      <div class="modal-backdrop" data-close-settings></div>
+      <div class="settings-panel">
+        <button class="modal-close" type="button" data-close-settings>×</button>
+        <h3 class="settings-title">Settings</h3>
+        <p class="settings-label">Theme</p>
+        <div class="theme-options">
+          <button class="theme-btn active" data-theme="light"><span class="theme-dot theme-light"></span> Light</button>
+          <button class="theme-btn" data-theme="dark"><span class="theme-dot theme-dark"></span> Dark</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/tools.js"></script>
+    <script>
+      const statusEl = () => document.getElementById("json-status");
+
+      function showStatus(msg, isValid) {
+        const el = statusEl();
+        el.textContent = msg;
+        el.className = "json-status " + (isValid ? "valid" : "invalid");
+      }
+
+      function clearStatus() {
+        const el = statusEl();
+        el.textContent = "";
+        el.className = "json-status";
+      }
+
+      function formatJson() {
+        try {
+          const obj = JSON.parse(getInput());
+          setOutput(JSON.stringify(obj, null, 2));
+          showStatus("✓ Valid JSON", true);
+        } catch (e) {
+          showStatus("✗ Invalid JSON: " + e.message, false);
+        }
+      }
+
+      function minifyJson() {
+        try {
+          const obj = JSON.parse(getInput());
+          setOutput(JSON.stringify(obj));
+          showStatus("✓ Minified", true);
+        } catch (e) {
+          showStatus("✗ Invalid JSON: " + e.message, false);
+        }
+      }
+
+      function validateJson() {
+        try {
+          JSON.parse(getInput());
+          showStatus("✓ Valid JSON", true);
+        } catch (e) {
+          showStatus("✗ Invalid JSON: " + e.message, false);
+        }
+      }
+
+      const settingsModal = document.getElementById("settings-modal");
+      const settingsBtn = document.getElementById("settings-btn");
+      const THEME_KEY = "textkit-theme";
+
+      settingsBtn.addEventListener("click", () => settingsModal.hidden = false);
+      settingsModal.querySelectorAll("[data-close-settings]").forEach((el) => {
+        el.addEventListener("click", () => settingsModal.hidden = true);
+      });
+      document.querySelectorAll(".theme-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const theme = btn.dataset.theme;
+          localStorage.setItem(THEME_KEY, theme);
+          document.body.classList.toggle("dark-mode", theme === "dark");
+          document.querySelectorAll(".theme-btn").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+      const savedTheme = localStorage.getItem(THEME_KEY) || "light";
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        document.querySelector(".theme-btn[data-theme='dark']")?.classList.add("active");
+        document.querySelector(".theme-btn[data-theme='light']")?.classList.remove("active");
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") settingsModal.hidden = true;
+      });
+    </script>
+  </body>
+</html>

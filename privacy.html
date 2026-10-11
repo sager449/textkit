@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="TextKit Privacy Policy — your data stays on your device." />
+    <title>Privacy Policy — TextKit</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .page-content {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+      }
+      .page-content h1 {
+        font-size: clamp(36px, 5vw, 56px);
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        line-height: 1.1;
+        margin: 0 0 24px;
+      }
+      .page-content h1 span { color: var(--accent); }
+      .page-content h2 {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin: 36px 0 12px;
+        color: var(--ink);
+      }
+      .page-content p, .page-content li {
+        font-size: 15px;
+        line-height: 1.75;
+        color: var(--muted);
+        margin: 0 0 14px;
+      }
+      .page-content ul {
+        padding-left: 22px;
+        margin: 0 0 14px;
+      }
+      .page-content a {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .updated {
+        font-size: 13px !important;
+        color: var(--muted) !important;
+        opacity: 0.7;
+        margin-bottom: 30px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="TextKit home">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <button class="settings-btn" id="settings-btn" aria-label="Settings">⚙️</button>
+    </header>
+
+    <main class="page-content">
+      <p class="eyebrow">
+        <span class="eyebrow-dot"></span> Legal
+      </p>
+      <h1>Privacy <span>Policy</span></h1>
+      <p class="updated">Last updated: 2026</p>
+
+      <p>
+        At TextKit, your privacy is important to us. This page explains what information we collect, how we use it, and how we protect it.
+      </p>
+
+      <h2>1. Your Text Never Leaves Your Device</h2>
+      <p>
+        <strong>All text processing happens locally in your browser.</strong> When you use any of our tools (like Remove Spaces, Word Counter, or Base64), the text you enter is processed on your device. It is never sent to our servers, never stored, and never seen by anyone — including us.
+      </p>
+
+      <h2>2. What We Collect</h2>
+      <p>We do <strong>not</strong> collect:</p>
+      <ul>
+        <li>Your text content</li>
+        <li>Personal information (name, email, address)</li>
+        <li>Files you process</li>
+      </ul>
+      <p>We <strong>do</strong> collect anonymous usage data via Google Analytics:</p>
+      <ul>
+        <li>Page views and general usage patterns</li>
+        <li>Browser type and device type</li>
+        <li>Country (approximate location)</li>
+        <li>Referral source (how you found us)</li>
+      </ul>
+      <p>This data is anonymized and helps us improve the site.</p>
+
+      <h2>3. Cookies</h2>
+      <p>
+        We use minimal cookies for:
+      </p>
+      <ul>
+        <li><strong>Theme preference</strong> (light/dark mode saved locally)</li>
+        <li><strong>Google Analytics</strong> (anonymous statistics)</li>
+        <li><strong>Google AdSense</strong> (for displaying ads)</li>
+      </ul>
+
+      <h2>4. Advertising</h2>
+      <p>
+        We may display ads through <strong>Google AdSense</strong>. Google and its partners may use cookies to show ads based on your visits to this and other websites. You can opt out of personalized advertising at:
+        <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ads Settings</a>.
+      </p>
+
+      <h2>5. Third-Party Services</h2>
+      <ul>
+        <li>Google Analytics — for anonymous statistics</li>
+        <li>Google AdSense — for displaying ads</li>
+        <li>Vercel — for hosting the website</li>
+      </ul>
+
+      <h2>6. Children's Privacy</h2>
+      <p>
+        TextKit is safe for all ages. We do not knowingly collect personal information from children under 13.
+      </p>
+
+      <h2>7. Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. Any changes will be posted on this page.
+      </p>
+
+      <h2>8. Contact</h2>
+      <p>
+        Questions about this policy? Contact us at:
+        <a href="mailto:contact@textkit.com">contact@textkit.com</a>
+      </p>
+
+      <p style="margin-top: 30px;">
+        <a href="/">← Back to all tools</a>
+      </p>
+    </main>
+
+    <footer class="site-footer section-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Text<em>Kit</em></span>
+      </a>
+      <p>© 2026 TextKit — All tools are free</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </footer>
+
+    <div class="settings-modal" id="settings-modal" hidden>
+      <div class="modal-backdrop" data-close-settings></div>
+      <div class="settings-panel">
+        <button class="modal-close" type="button" data-close-settings>×</button>
+        <h3 class="settings-title">Settings</h3>
+        <p class="settings-label">Theme</p>
+        <div class="theme-options">
+          <button class="theme-btn active" data-theme="light">
+            <span class="theme-dot theme-light"></span> Light
+          </button>
+          <button class="theme-btn" data-theme="dark">
+            <span class="theme-dot theme-dark"></span> Dark
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const settingsModal = document.getElementById("settings-modal");
+      const settingsBtn = document.getElementById("settings-btn");
+      const THEME_KEY = "textkit-theme";
+
+      settingsBtn.addEventListener("click", () => settingsModal.hidden = false);
+      settingsModal.querySelectorAll("[data-close-settings]").forEach((el) => {
+        el.addEventListener("click", () => settingsModal.hidden = true);
+      });
+      document.querySelectorAll(".theme-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const theme = btn.dataset.theme;
+          localStorage.setItem(THEME_KEY, theme);
+          document.body.classList.toggle("dark-mode", theme === "dark");
+          document.querySelectorAll(".theme-btn").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+      const savedTheme = localStorage.getItem(THEME_KEY) || "light";
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        document.querySelector(".theme-btn[data-theme='dark']")?.classList.add("active");
+        document.querySelector(".theme-btn[data-theme='light']")?.classList.remove("active");
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") settingsModal.hidden = true;
+      });
+    </script>
+  </body>
+</html>

@@ -22,9 +22,7 @@
         <span class="brand-mark">T</span>
         <span class="brand-name">Text<em>Kit</em></span>
       </a>
-      <button class="settings-btn" id="settings-btn" aria-label="Settings">
-        ⚙️
-      </button>
+      <button class="settings-btn" id="settings-btn" aria-label="Settings">⚙️</button>
     </header>
 
     <main>
@@ -100,7 +98,18 @@
         { id: "base64", icon: "64", name: "Base64 Encode/Decode", desc: "Convert to/from Base64." },
         { id: "url-encode", icon: "%", name: "URL Encode/Decode", desc: "Encode or decode URLs." },
         { id: "json-formatter", icon: "{}", name: "JSON Formatter", desc: "Format and validate JSON." },
-        { id: "html-escape", icon: "&", name: "HTML Escape", desc: "Escape or unescape HTML." }
+        { id: "html-escape", icon: "&", name: "HTML Escape", desc: "Escape or unescape HTML." },
+        { id: "remove-emoji", icon: "☺", name: "Remove Emojis", desc: "Remove all emojis from text." },
+        { id: "reverse-words", icon: "⇋", name: "Reverse Word Order", desc: "Reverse word order (not letters)." },
+        { id: "sentence-counter", icon: "…", name: "Sentence Counter", desc: "Count sentences in your text." },
+        { id: "paragraph-counter", icon: "¶¶", name: "Paragraph Counter", desc: "Count paragraphs in your text." },
+        { id: "reading-time", icon: "⏱", name: "Reading Time", desc: "Calculate reading time." },
+        { id: "extract-numbers", icon: "№", name: "Extract Numbers", desc: "Extract all numbers from text." },
+        { id: "extract-hashtags", icon: "＃", name: "Extract Hashtags", desc: "Extract all hashtags from text." },
+        { id: "arabic-numbers", icon: "١٢", name: "Arabic Numbers", desc: "Convert Arabic ↔ English numbers." },
+        { id: "remove-duplicate-words", icon: "⊘", name: "Remove Duplicate Words", desc: "Remove repeated words." },
+        { id: "sort-words", icon: "⇅", name: "Sort Words", desc: "Sort words alphabetically." },
+        { id: "remove-english-diacritics", icon: "é", name: "Remove Latin Diacritics", desc: "café → cafe." }
       ];
 
       const THEME_KEY = "textkit-theme";
@@ -109,11 +118,11 @@
       const toolsGrid = document.getElementById("tools-grid");
 
       function renderTools() {
-        toolsGrid.innerHTML = TOOLS.map((tool) => `
+        toolsGrid.innerHTML = TOOLS.map((tool, index) => `
           <a class="tool-card" href="tools/${tool.id}.html">
             <div class="tool-icon">${tool.icon}</div>
             <div class="tool-info">
-              <h3>${tool.name}</h3>
+              <h3>${index + 1}. ${tool.name}</h3>
               <p>${tool.desc}</p>
             </div>
             <span class="tool-arrow">→</span>
@@ -163,4 +172,4 @@
       renderTools();
     </script>
   </body>
-</html>
+        </html>

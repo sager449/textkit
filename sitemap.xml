@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://textkit.vercel.app/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Tools -->
+  <url><loc>https://textkit.vercel.app/tools/remove-spaces.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-line-breaks.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/word-counter.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/case-converter.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-diacritics.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-punctuation.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-duplicates.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/sort-lines.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/text-to-slug.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/character-counter.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/find-and-replace.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/extract-emails.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/extract-urls.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/text-repeater.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/add-line-numbers.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-numbers.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-html-tags.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/trim-text.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/lorem-ipsum.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/base64.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/url-encode.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/json-formatter.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/html-escape.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-emoji.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/reverse-words.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/sentence-counter.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/paragraph-counter.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/reading-time.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/extract-numbers.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/extract-hashtags.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/arabic-numbers.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-duplicate-words.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/sort-words.html</loc><priority>0.9</priority></url>
+  <url><loc>https://textkit.vercel.app/tools/remove-english-diacritics.html</loc><priority>0.9</priority></url>
+
+</urlset>

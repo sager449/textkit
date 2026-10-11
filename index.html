@@ -55,132 +55,83 @@
         <a href="#">About</a>
         <a href="#">Privacy</a>
       </div>
-      </footer>
-      
-<!-- ===== Settings Modal ===== -->
-<div class="settings-modal" id="settings-modal" hidden>
-  <div class="modal-backdrop" data-close-settings></div>
-  <div class="settings-panel">
-    <button class="modal-close" type="button" data-close-settings>×</button>
-    <h3 class="settings-title">Settings</h3>
-    <p class="settings-label">Theme</p>
-    <div class="theme-options">
-      <button class="theme-btn active" data-theme="light">
-        <span class="theme-dot theme-light"></span> Light
-      </button>
-      <button class="theme-btn" data-theme="dark">
-        <span class="theme-dot theme-dark"></span> Dark
-      </button>
-    </div>
-  </div>
-</div>
+    </footer>
 
-<script>
-  /* ===== Tools Data ===== */
-  const TOOLS = [
-    {
-      id: "remove-spaces",
-      icon: "⎵",
-      name: "Remove Spaces",
-      nameAr: "إزالة المسافات",
-      desc: "Remove extra spaces from your text."
-    },
-    {
-      id: "remove-line-breaks",
-      icon: "¶",
-      name: "Remove Line Breaks",
-      nameAr: "إزالة الأسطر الفارغة",
-      desc: "Combine lines into a single paragraph."
-    },
-    {
-      id: "word-counter",
-      icon: "#",
-      name: "Word Counter",
-      nameAr: "عدّ الكلمات",
-      desc: "Count words, characters, and sentences."
-    },
-    {
-      id: "case-converter",
-      icon: "Aa",
-      name: "Case Converter",
-      nameAr: "تحويل حالة الأحرف",
-      desc: "UPPER, lower, Title Case, and more."
-    },
-    {
-      id: "remove-diacritics",
-      icon: "َ",
-      name: "Remove Diacritics",
-      nameAr: "إزالة التشكيل",
-      desc: "Remove Arabic diacritics (tashkeel)."
-    },
-    {
-      id: "remove-punctuation",
-      icon: "!",
-      name: "Remove Punctuation",
-      nameAr: "إزالة الرموز",
-      desc: "Remove all punctuation marks."
-    },
-    {
-      id: "reverse-text",
-      icon: "↔",
-      name: "Reverse Text",
-      nameAr: "عكس النص",
-      desc: "Reverse the order of characters."
-    },
-    {
-      id: "remove-duplicates",
-      icon: "≡",
-      name: "Remove Duplicate Lines",
-      nameAr: "إزالة الأسطر المكررة",
-      desc: "Remove duplicate lines from a list."
-    },
-    {
-      id: "sort-lines",
-      icon: "↕",
-      name: "Sort Lines",
-      nameAr: "ترتيب الأسطر",
-      desc: "Sort lines alphabetically A-Z or Z-A."
-    },
-    {
-      id: "text-to-slug",
-      icon: "/",
-      name: "Text to Slug",
-      nameAr: "تحويل إلى رابط",
-      desc: "Convert text to a URL-friendly slug."
-    }
-  ];
-
-  const THEME_KEY = "textkit-theme";
-
-  /* ===== Render Tools ===== */
-  const toolsGrid = document.getElementById("tools-grid");
-
-  function renderTools() {
-    toolsGrid.innerHTML = TOOLS.map((tool) => `
-      <a class="tool-card" href="tools/${tool.id}.html">
-        <div class="tool-icon">${tool.icon}</div>
-        <div class="tool-info">
-          <h3>${tool.name}</h3>
-          <p>${tool.desc}</p>
+    <!-- ===== Settings Modal ===== -->
+    <div class="settings-modal" id="settings-modal" hidden>
+      <div class="modal-backdrop" data-close-settings></div>
+      <div class="settings-panel">
+        <button class="modal-close" type="button" data-close-settings>×</button>
+        <h3 class="settings-title">Settings</h3>
+        <p class="settings-label">Theme</p>
+        <div class="theme-options">
+          <button class="theme-btn active" data-theme="light">
+            <span class="theme-dot theme-light"></span> Light
+          </button>
+          <button class="theme-btn" data-theme="dark">
+            <span class="theme-dot theme-dark"></span> Dark
+          </button>
         </div>
-        <span class="tool-arrow">→</span>
-      </a>
-    `).join("");
-  }
-  
+      </div>
+    </div>
+
+    <script>
+      /* ===== Tools Data ===== */
+      const TOOLS = [
+        { id: "remove-spaces", icon: "⎵", name: "Remove Spaces", desc: "Remove extra spaces from your text." },
+        { id: "remove-line-breaks", icon: "¶", name: "Remove Line Breaks", desc: "Combine lines into a single paragraph." },
+        { id: "word-counter", icon: "#", name: "Word Counter", desc: "Count words, characters, and sentences." },
+        { id: "case-converter", icon: "Aa", name: "Case Converter", desc: "UPPER, lower, Title Case, and more." },
+        { id: "remove-diacritics", icon: "َ", name: "Remove Diacritics", desc: "Remove Arabic diacritics (tashkeel)." },
+        { id: "remove-punctuation", icon: "!", name: "Remove Punctuation", desc: "Remove all punctuation marks." },
+        { id: "remove-duplicates", icon: "≡", name: "Remove Duplicate Lines", desc: "Remove duplicate lines from a list." },
+        { id: "sort-lines", icon: "↕", name: "Sort Lines", desc: "Sort lines alphabetically A-Z or Z-A." },
+        { id: "text-to-slug", icon: "/", name: "Text to Slug", desc: "Convert text to a URL-friendly slug." },
+        { id: "character-counter", icon: "©", name: "Character Counter", desc: "Count letters, numbers, and symbols." },
+        { id: "find-and-replace", icon: "⌕", name: "Find and Replace", desc: "Replace text instantly." },
+        { id: "extract-emails", icon: "@", name: "Extract Emails", desc: "Find all emails in your text." },
+        { id: "extract-urls", icon: "🔗", name: "Extract URLs", desc: "Find all URLs in your text." },
+        { id: "text-repeater", icon: "×", name: "Text Repeater", desc: "Repeat text multiple times." },
+        { id: "add-line-numbers", icon: "1.", name: "Add Line Numbers", desc: "Add numbers to each line." },
+        { id: "remove-numbers", icon: "0", name: "Remove Numbers", desc: "Remove all digits from text." },
+        { id: "remove-html-tags", icon: "<>", name: "Remove HTML Tags", desc: "Strip all HTML tags." },
+        { id: "trim-text", icon: "⌐", name: "Trim Text", desc: "Remove whitespace from edges." },
+        { id: "lorem-ipsum", icon: "L", name: "Lorem Ipsum", desc: "Generate placeholder text." },
+        { id: "base64", icon: "64", name: "Base64 Encode/Decode", desc: "Convert to/from Base64." },
+        { id: "url-encode", icon: "%", name: "URL Encode/Decode", desc: "Encode or decode URLs." },
+        { id: "json-formatter", icon: "{}", name: "JSON Formatter", desc: "Format and validate JSON." },
+        { id: "html-escape", icon: "&", name: "HTML Escape", desc: "Escape or unescape HTML." }
+      ];
+
+      const THEME_KEY = "textkit-theme";
+
+      /* ===== Render Tools ===== */
+      const toolsGrid = document.getElementById("tools-grid");
+
+      function renderTools() {
+        toolsGrid.innerHTML = TOOLS.map((tool) => `
+          <a class="tool-card" href="tools/${tool.id}.html">
+            <div class="tool-icon">${tool.icon}</div>
+            <div class="tool-info">
+              <h3>${tool.name}</h3>
+              <p>${tool.desc}</p>
+            </div>
+            <span class="tool-arrow">→</span>
+          </a>
+        `).join("");
+      }
+
       /* ===== Settings ===== */
       const settingsModal = document.getElementById("settings-modal");
       const settingsBtn = document.getElementById("settings-btn");
 
       settingsBtn.addEventListener("click", () => {
         settingsModal.hidden = false;
-        document.body.classList.add("modal-open");
       });
 
       settingsModal.querySelectorAll("[data-close-settings]").forEach((el) => {
         el.addEventListener("click", () => {
           settingsModal.hidden = true;
-          document.body.classList.remove("modal-open");
         });
       });
 
@@ -189,7 +140,6 @@
         btn.addEventListener("click", () => {
           const theme = btn.dataset.theme;
           localStorage.setItem(THEME_KEY, theme);
-          document.documentElement.setAttribute("data-theme", theme);
           document.body.classList.toggle("dark-mode", theme === "dark");
           document.querySelectorAll(".theme-btn").forEach((b) =>
             b.classList.remove("active")
@@ -199,19 +149,14 @@
       });
 
       const savedTheme = localStorage.getItem(THEME_KEY) || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
       if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
         document.querySelector(".theme-btn[data-theme='dark']")?.classList.add("active");
         document.querySelector(".theme-btn[data-theme='light']")?.classList.remove("active");
       }
 
-      /* ===== ESC closes ===== */
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          settingsModal.hidden = true;
-          document.body.classList.remove("modal-open");
-        }
+        if (e.key === "Escape") settingsModal.hidden = true;
       });
 
       /* ===== Init ===== */

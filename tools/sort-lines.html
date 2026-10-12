@@ -3,16 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sort lines alphabetically A-Z or Z-A. Free online tool." />
-    <title>Sort Lines — TextKit</title>
+    <title>Sort Lines — Sort Text Alphabetically Online Free | TextKit</title>
+    <meta name="description" content="Free online tool to sort lines alphabetically. Sort A-Z or Z-A instantly. Removes empty lines automatically. No signup, 100% private." />
+    <link rel="canonical" href="https://textkit-xi.vercel.app/tools/sort-lines.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sort Lines — Sort Text Alphabetically Online Free" />
+    <meta property="og:description" content="Sort lines alphabetically A-Z or Z-A instantly. Removes empty lines. Free and private." />
+    <meta property="og:url" content="https://textkit-xi.vercel.app/tools/sort-lines.html" />
+    <meta property="og:type" content="website" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/tool.css" />
+
+    <!-- Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Sort Lines",
+      "url": "https://textkit-xi.vercel.app/tools/sort-lines.html",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online tool to sort lines alphabetically. Sort A-Z or Z-A instantly with automatic removal of empty lines.",
+      "featureList": [
+        "Sort A-Z and Z-A instantly",
+        "Removes empty lines automatically",
+        "Case-insensitive sorting",
+        "100% private — runs in your browser"
+      ]
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does this tool do exactly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It sorts the lines of your text alphabetically — A to Z or Z to A — and removes empty lines automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this sort lines tool free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — 100% free, with no signup or registration required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my text stored anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All processing happens locally in your browser. Your text is never sent to any server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the sort case-sensitive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The tool sorts case-insensitively, so 'apple' and 'Apple' are treated the same, and 'Zebra' sorts next to 'zebra'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it sort numbers correctly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lines starting with numbers are sorted alphabetically as text — so '10' comes before '2'. For natural numeric sorting, use a dedicated numeric sort tool."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -35,49 +114,80 @@
         </div>
 
         <div class="tool-panel">
-          <textarea
-            class="tool-textarea"
-            id="input"
-            placeholder="Paste your list here (one item per line)..."
-          ></textarea>
+          <textarea class="tool-textarea" id="input" placeholder="Paste your list here (one item per line)..."></textarea>
 
           <div class="tool-actions">
-            <button class="btn btn-primary" onclick="sortLines('asc')">
-              Sort A → Z
-            </button>
-            <button class="btn btn-primary" onclick="sortLines('desc')">
-              Sort Z → A
-            </button>
+            <button class="btn btn-primary" onclick="sortLines('asc')">Sort A → Z</button>
+            <button class="btn btn-primary" onclick="sortLines('desc')">Sort Z → A</button>
           </div>
 
           <div class="tool-actions">
             <button class="btn btn-secondary" onclick="copyOutput()">
               Copy <span class="copy-feedback" id="copy-feedback">✓ Copied</span>
             </button>
-            <button class="btn btn-secondary" onclick="clearAll()">
-              Clear
-            </button>
+            <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
           </div>
 
           <div class="tool-stats">
-            <div class="stat-box">
-              <strong id="stat-words">0</strong>
-              <span>Words</span>
-            </div>
-            <div class="stat-box">
-              <strong id="stat-chars">0</strong>
-              <span>Characters</span>
-            </div>
-            <div class="stat-box">
-              <strong id="stat-chars-ns">0</strong>
-              <span>No Spaces</span>
-            </div>
-            <div class="stat-box">
-              <strong id="stat-lines">0</strong>
-              <span>Lines</span>
-            </div>
+            <div class="stat-box"><strong id="stat-words">0</strong><span>Words</span></div>
+            <div class="stat-box"><strong id="stat-chars">0</strong><span>Characters</span></div>
+            <div class="stat-box"><strong id="stat-chars-ns">0</strong><span>No Spaces</span></div>
+            <div class="stat-box"><strong id="stat-lines">0</strong><span>Lines</span></div>
           </div>
         </div>
+
+        <!-- ============ SEO Content Section ============ -->
+
+        <section class="tool-content">
+          <h2>What is a sort lines tool?</h2>
+          <p>A sort lines tool is a free online utility that reorders the lines of your text alphabetically. Choose A→Z for ascending order or Z→A for descending. Empty lines are removed automatically, and sorting is case-insensitive.</p>
+          <p>Manually sorting lists is tedious and error-prone, especially with hundreds of items. Whether you're organizing names, URLs, keywords, or CSV rows, this tool sorts in one click — with perfect accuracy.</p>
+
+          <h2>How to use it</h2>
+          <ol>
+            <li>Paste your list into the box above (one item per line).</li>
+            <li>Click <strong>Sort A → Z</strong> or <strong>Sort Z → A</strong>.</li>
+            <li>The lines are sorted instantly — empty lines removed.</li>
+            <li>Click <strong>Copy</strong> to copy the sorted list, or <strong>Clear</strong> to start over.</li>
+          </ol>
+
+          <h2>Why use our sort lines tool?</h2>
+          <ul>
+            <li><strong>Instant</strong> — sorts thousands of lines in a click</li>
+            <li><strong>Free</strong> — no signup, no limit</li>
+            <li><strong>Private</strong> — your text never leaves your browser</li>
+            <li><strong>Two directions</strong> — A→Z and Z→A</li>
+            <li><strong>Case-insensitive</strong> — 'Apple' and 'apple' sort together</li>
+            <li><strong>Clean output</strong> — empty lines removed automatically</li>
+          </ul>
+
+          <h2>When to use it</h2>
+          <ul>
+            <li><strong>Name lists</strong> — alphabetize contact lists and team members.</li>
+            <li><strong>URL lists</strong> — sort URLs for audits and sitemaps.</li>
+            <li><strong>Keyword research</strong> — alphabetize SEO keywords.</li>
+            <li><strong>CSV data</strong> — sort rows before importing.</li>
+            <li><strong>Bibliographies</strong> — alphabetize references.</li>
+            <li><strong>Task lists</strong> — organize to-dos by priority or name.</li>
+          </ul>
+
+          <h2>FAQ</h2>
+
+          <h3>What does this tool do exactly?</h3>
+          <p>It sorts the lines of your text alphabetically — A to Z or Z to A — and removes empty lines automatically.</p>
+
+          <h3>Is this sort lines tool free?</h3>
+          <p>Yes — 100% free, with no signup or registration required.</p>
+
+          <h3>Is my text stored anywhere?</h3>
+          <p>No. All processing happens locally in your browser. Your text is never sent to any server.</p>
+
+          <h3>Is the sort case-sensitive?</h3>
+          <p>No. The tool sorts case-insensitively, so 'apple' and 'Apple' are treated the same, and 'Zebra' sorts next to 'zebra'.</p>
+
+          <h3>Does it sort numbers correctly?</h3>
+          <p>Lines starting with numbers are sorted alphabetically as text — so '10' comes before '2'. For natural numeric sorting, use a dedicated numeric sort tool.</p>
+        </section>
       </div>
     </main>
 
@@ -89,7 +199,6 @@
       <p>© 2026 TextKit</p>
     </footer>
 
-    <!-- ===== Settings Modal ===== -->
     <div class="settings-modal" id="settings-modal" hidden>
       <div class="modal-backdrop" data-close-settings></div>
       <div class="settings-panel">
@@ -97,54 +206,50 @@
         <h3 class="settings-title">Settings</h3>
         <p class="settings-label">Theme</p>
         <div class="theme-options">
-          <button class="theme-btn active" data-theme="light">
-            <span class="theme-dot theme-light"></span> Light
-          </button>
-          <button class="theme-btn" data-theme="dark">
-            <span class="theme-dot theme-dark"></span> Dark
-          </button>
+          <button class="theme-btn active" data-theme="light"><span class="theme-dot theme-light"></span> Light</button>
+          <button class="theme-btn" data-theme="dark"><span class="theme-dot theme-dark"></span> Dark</button>
         </div>
       </div>
     </div>
 
     <script src="../js/tools.js"></script>
     <script>
+      function sortLines(direction) {
+        const lines = getInput()
+          .split("\n")
+          .filter((l) => l.trim() !== "");
+        lines.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+        if (direction === "desc") lines.reverse();
+        setOutput(lines.join("\n"));
+        updateStats();
+      }
+
       const settingsModal = document.getElementById("settings-modal");
       const settingsBtn = document.getElementById("settings-btn");
       const THEME_KEY = "textkit-theme";
 
-      settingsBtn.addEventListener("click", () => {
-        settingsModal.hidden = false;
-      });
-
+      settingsBtn.addEventListener("click", () => settingsModal.hidden = false);
       settingsModal.querySelectorAll("[data-close-settings]").forEach((el) => {
-        el.addEventListener("click", () => {
-          settingsModal.hidden = true;
-        });
+        el.addEventListener("click", () => settingsModal.hidden = true);
       });
-
       document.querySelectorAll(".theme-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           const theme = btn.dataset.theme;
           localStorage.setItem(THEME_KEY, theme);
           document.body.classList.toggle("dark-mode", theme === "dark");
-          document.querySelectorAll(".theme-btn").forEach((b) =>
-            b.classList.remove("active")
-          );
+          document.querySelectorAll(".theme-btn").forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
         });
       });
-
       const savedTheme = localStorage.getItem(THEME_KEY) || "light";
       if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
         document.querySelector(".theme-btn[data-theme='dark']")?.classList.add("active");
         document.querySelector(".theme-btn[data-theme='light']")?.classList.remove("active");
       }
-
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") settingsModal.hidden = true;
       });
     </script>
   </body>
-  </html>
+</html>

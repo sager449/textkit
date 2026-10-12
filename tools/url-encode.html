@@ -3,13 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Encode and decode URL text instantly. Free online tool." />
-    <title>URL Encode / Decode — TextKit</title>
+    <title>URL Encode / Decode — Encode URL Text Online Free | TextKit</title>
+    <meta name="description" content="Free online URL encoder and decoder. Convert text to URL-safe format or decode encoded URLs instantly. Works with Arabic and English. 100% private." />
+    <link rel="canonical" href="https://textkit-xi.vercel.app/tools/url-encode.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="URL Encode / Decode — Encode URL Text Online Free" />
+    <meta property="og:description" content="Encode text to URL-safe format or decode encoded URLs instantly. Free and private." />
+    <meta property="og:url" content="https://textkit-xi.vercel.app/tools/url-encode.html" />
+    <meta property="og:type" content="website" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/tool.css" />
+
+    <!-- Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "URL Encode / Decode",
+      "url": "https://textkit-xi.vercel.app/tools/url-encode.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online URL encoder and decoder. Convert text to URL-safe format or decode encoded URLs instantly.",
+      "featureList": [
+        "Encode text to URL-safe format",
+        "Decode URL-encoded text instantly",
+        "Works with Arabic and English",
+        "100% private — runs in your browser"
+      ]
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is URL encoding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "URL encoding (percent encoding) converts characters that aren't allowed in URLs into a safe format. For example, a space becomes %20, and ع becomes %D8%B9."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this URL encoder free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — 100% free, with no signup or registration required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my text stored anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All processing happens locally in your browser. Your text is never sent to any server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between encodeURI and encodeURIComponent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This tool uses encodeURIComponent, which encodes all reserved characters — perfect for encoding query parameters and form values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work with Arabic text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Arabic characters are correctly encoded to their UTF-8 percent-encoded form, and decoded back to Arabic."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -53,6 +135,67 @@
             <div class="stat-box"><strong id="stat-lines">0</strong><span>Lines</span></div>
           </div>
         </div>
+
+        <!-- ============ SEO Content Section ============ -->
+
+        <section class="tool-content">
+          <h2>What is URL encoding?</h2>
+          <p>URL encoding (also called percent encoding) is the process of converting characters that aren't allowed in URLs into a safe, transportable format. For example, a space becomes <code>%20</code>, the character <code>&amp;</code> becomes <code>%26</code>, and Arabic characters like <code>ع</code> become multi-byte sequences like <code>%D8%B9</code>.</p>
+          <p>URL decoding is the reverse — it converts percent-encoded strings back into readable text. This is essential when reading URLs, debugging web requests, or cleaning scraped data.</p>
+
+          <h2>Common examples</h2>
+          <ul>
+            <li><code>hello world</code> → <code>hello%20world</code></li>
+            <li><code>a&amp;b=c</code> → <code>a%26b%3Dc</code></li>
+            <li><code>مرحبا</code> → <code>%D9%85%D8%B1%D8%AD%D8%A8%D8%A7</code></li>
+            <li><code>user@email.com</code> → <code>user%40email.com</code></li>
+          </ul>
+
+          <h2>How to use it</h2>
+          <ol>
+            <li>Paste or type your text into the box above.</li>
+            <li>Click <strong>Encode URL</strong> to convert to URL-safe format, or <strong>Decode URL</strong> to read an encoded string.</li>
+            <li>The result appears instantly in the output box.</li>
+            <li>Click <strong>Copy</strong> to copy the result, or <strong>Clear</strong> to start over.</li>
+          </ol>
+
+          <h2>Why use our URL encoder?</h2>
+          <ul>
+            <li><strong>Instant</strong> — encodes or decodes in one click</li>
+            <li><strong>Free</strong> — no signup, no limit</li>
+            <li><strong>Private</strong> — your text never leaves your browser</li>
+            <li><strong>Two-way</strong> — encode and decode in the same tool</li>
+            <li><strong>Arabic supported</strong> — handles UTF-8 correctly for all languages</li>
+            <li><strong>Live stats</strong> — word, character, and line counts update automatically</li>
+          </ul>
+
+          <h2>When to use it</h2>
+          <ul>
+            <li><strong>Query strings</strong> — encode user input for API requests.</li>
+            <li><strong>Form data</strong> — prepare values for POST requests.</li>
+            <li><strong>Debugging</strong> — decode long URLs to see what they contain.</li>
+            <li><strong>SEO analysis</strong> — inspect encoded URLs in sitemaps and logs.</li>
+            <li><strong>Web scraping</strong> — decode URLs extracted from HTML.</li>
+            <li><strong>Data cleaning</strong> — normalize URLs before storing in a database.</li>
+          </ul>
+
+          <h2>FAQ</h2>
+
+          <h3>What is URL encoding?</h3>
+          <p>URL encoding (percent encoding) converts characters that aren't allowed in URLs into a safe format. For example, a space becomes <code>%20</code>, and <code>ع</code> becomes <code>%D8%B9</code>.</p>
+
+          <h3>Is this URL encoder free?</h3>
+          <p>Yes — 100% free, with no signup or registration required.</p>
+
+          <h3>Is my text stored anywhere?</h3>
+          <p>No. All processing happens locally in your browser. Your text is never sent to any server.</p>
+
+          <h3>What's the difference between encodeURI and encodeURIComponent?</h3>
+          <p>This tool uses <code>encodeURIComponent</code>, which encodes all reserved characters — perfect for encoding query parameters and form values.</p>
+
+          <h3>Does it work with Arabic text?</h3>
+          <p>Yes. Arabic characters are correctly encoded to their UTF-8 percent-encoded form, and decoded back to Arabic.</p>
+        </section>
       </div>
     </main>
 
@@ -127,4 +270,4 @@
       });
     </script>
   </body>
-</html>
+  </html>

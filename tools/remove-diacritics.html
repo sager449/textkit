@@ -3,16 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Remove Arabic diacritics (tashkeel) from your text instantly. Free online tool." />
-    <title>Remove Diacritics — TextKit</title>
+    <title>Remove Diacritics — Remove Arabic Tashkeel Online | TextKit</title>
+    <meta name="description" content="Free online tool to remove Arabic diacritics (tashkeel / تشكيل) from text. Strip harakat, tanween, shadda instantly. No signup, 100% private." />
+    <link rel="canonical" href="https://textkit-xi.vercel.app/tools/remove-diacritics.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Remove Diacritics — Remove Arabic Tashkeel Online" />
+    <meta property="og:description" content="Remove Arabic diacritics (tashkeel) from your text instantly. Free, private, works with any Arabic text." />
+    <meta property="og:url" content="https://textkit-xi.vercel.app/tools/remove-diacritics.html" />
+    <meta property="og:type" content="website" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/tool.css" />
+
+    <!-- Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Remove Diacritics",
+      "url": "https://textkit-xi.vercel.app/tools/remove-diacritics.html",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online tool to remove Arabic diacritics (tashkeel) from text. Strip harakat, tanween, and shadda instantly.",
+      "featureList": [
+        "Remove Arabic tashkeel instantly",
+        "Removes harakat, tanween, shadda",
+        "Works with any Arabic text",
+        "100% private — runs in your browser"
+      ]
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are Arabic diacritics (tashkeel)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tashkeel (تشكيل) are small marks placed above or below Arabic letters to indicate short vowels and pronunciation — such as fatha (َ), damma (ُ), kasra (ِ), sukoon (ْ), shadda (ّ), and tanween (ًٌٍ)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this remove diacritics tool free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — 100% free, with no signup or registration required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my text stored anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All processing happens locally in your browser. Your text is never sent to any server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it remove the letter hamza (ء) or the madda (آ)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The tool removes only diacritical marks (harakat and tanween). It keeps letters like hamza (ء), madda (آ), and taa marbuta (ة) untouched."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work with mixed Arabic and English text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. English characters and punctuation are preserved. Only Arabic diacritics are removed."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -55,24 +134,73 @@
           </div>
 
           <div class="tool-stats">
-            <div class="stat-box">
-              <strong id="stat-words">0</strong>
-              <span>Words</span>
-            </div>
-            <div class="stat-box">
-              <strong id="stat-chars">0</strong>
-              <span>Characters</span>
-            </div>
-            <div class="stat-box">
-              <strong id="stat-chars-ns">0</strong>
-              <span>No Spaces</span>
-            </div>
-            <div class="stat-box">
-              <strong id="stat-lines">0</strong>
-              <span>Lines</span>
-            </div>
+            <div class="stat-box"><strong id="stat-words">0</strong><span>Words</span></div>
+            <div class="stat-box"><strong id="stat-chars">0</strong><span>Characters</span></div>
+            <div class="stat-box"><strong id="stat-chars-ns">0</strong><span>No Spaces</span></div>
+            <div class="stat-box"><strong id="stat-lines">0</strong><span>Lines</span></div>
           </div>
         </div>
+
+        <!-- ============ SEO Content Section ============ -->
+
+        <section class="tool-content">
+          <h2>What are Arabic diacritics?</h2>
+          <p>Arabic diacritics — known as <em>tashkeel</em> (تشكيل) or <em>harakat</em> (حركات) — are small marks placed above or below Arabic letters to indicate short vowels and pronunciation. They include:</p>
+          <ul>
+            <li><strong>Fatha (َ)</strong> — short "a" sound</li>
+            <li><strong>Damma (ُ)</strong> — short "u" sound</li>
+            <li><strong>Kasra (ِ)</strong> — short "i" sound</li>
+            <li><strong>Sukoon (ْ)</strong> — no vowel</li>
+            <li><strong>Shadda (ّ)</strong> — doubled consonant</li>
+            <li><strong>Tanween (ً ٌ ٍ)</strong> — adds "an", "un", "in"</li>
+          </ul>
+          <p>While tashkeel improves readability and is essential in the Quran and poetry, it becomes a problem in modern contexts: search engines, databases, NLP models, and social media often treat diacritics as noise.</p>
+
+          <h2>How to use it</h2>
+          <ol>
+            <li>Paste your Arabic text into the box above.</li>
+            <li>Click the <strong>Remove Diacritics</strong> button.</li>
+            <li>All tashkeel marks are removed instantly — letters stay intact.</li>
+            <li>Click <strong>Copy</strong> to copy the clean text, or <strong>Clear</strong> to start over.</li>
+          </ol>
+
+          <h2>Why use our remove diacritics tool?</h2>
+          <ul>
+            <li><strong>Instant</strong> — removes all tashkeel in one click</li>
+            <li><strong>Free</strong> — no signup, no limit</li>
+            <li><strong>Private</strong> — your text never leaves your browser</li>
+            <li><strong>Complete</strong> — removes fatha, damma, kasra, sukoon, shadda, and tanween</li>
+            <li><strong>Safe</strong> — keeps letters like hamza (ء) and taa marbuta (ة)</li>
+            <li><strong>Live stats</strong> — words, characters, and lines update automatically</li>
+          </ul>
+
+          <h2>When to use it</h2>
+          <ul>
+            <li><strong>Search engine optimization</strong> — Google indexes undiacritized Arabic more reliably.</li>
+            <li><strong>NLP and AI</strong> — many Arabic language models expect text without tashkeel.</li>
+            <li><strong>Database normalization</strong> — store one canonical version of each word.</li>
+            <li><strong>Text comparison</strong> — compare two Arabic texts ignoring diacritics.</li>
+            <li><strong>Social media</strong> — most Arabic posts are written without tashkeel.</li>
+            <li><strong>Word counting</strong> — diacritics can break word boundaries in some tools.</li>
+          </ul>
+
+          <h2>FAQ</h2>
+
+          <h3>What are Arabic diacritics (tashkeel)?</h3>
+          <p>Tashkeel (تشكيل) are small marks placed above or below Arabic letters to indicate short vowels and pronunciation — such as fatha (َ), damma (ُ), kasra (ِ), sukoon (ْ), shadda (ّ), and tanween (ً ٌ ٍ).</p>
+
+          <h3>Is this remove diacritics tool free?</h3>
+          <p>Yes — 100% free, with no signup or registration required.</p>
+
+          <h3>Is my text stored anywhere?</h3>
+          <p>No. All processing happens locally in your browser. Your text is never sent to any server.</p>
+
+          <h3>Will it remove the letter hamza (ء) or the madda (آ)?</h3>
+          <p>No. The tool removes only diacritical marks (harakat and tanween). It keeps letters like hamza (ء), madda (آ), and taa marbuta (ة) untouched.</p>
+
+          <h3>Does it work with mixed Arabic and English text?</h3>
+          <p>Yes. English characters and punctuation are preserved. Only Arabic diacritics are removed.</p>
+        </section>
       </div>
     </main>
 
@@ -142,4 +270,4 @@
       });
     </script>
   </body>
-</html>
+  </html>

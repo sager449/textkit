@@ -3,8 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Escape and unescape HTML entities instantly. Free online tool." />
-    <title>HTML Escape / Unescape — TextKit</title>
+    <title>HTML Escape / Unescape — Encode &amp; Decode HTML Online | TextKit</title>
+    <meta name="description" content="Free online HTML escape and unescape tool. Convert special characters to HTML entities (&lt; &gt; &amp;) or decode them back. No signup, 100% private." />
+    <link rel="canonical" href="https://textkit-xi.vercel.app/tools/html-escape.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="HTML Escape / Unescape — Encode &amp; Decode HTML Online" />
+    <meta property="og:description" content="Escape HTML special characters to entities, or decode entities back to characters. Free and private." />
+    <meta property="og:url" content="https://textkit-xi.vercel.app/tools/html-escape.html" />
+    <meta property="og:type" content="website" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -13,6 +21,80 @@
     <style>
       .tool-textarea { font-family: 'Courier New', monospace; }
     </style>
+
+    <!-- Schema: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "HTML Escape / Unescape",
+      "url": "https://textkit-xi.vercel.app/tools/html-escape.html",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online HTML escape and unescape tool. Convert special characters to HTML entities or decode them back.",
+      "featureList": [
+        "Escape HTML special characters instantly",
+        "Unescape HTML entities back to characters",
+        "Handles <, >, &, quotes, and more",
+        "100% private — runs in your browser"
+      ]
+    }
+    </script>
+
+    <!-- Schema: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does escaping HTML mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escaping converts special HTML characters like < > & \" ' into their safe entity form (&lt; &gt; &amp; &quot; &#39;). This prevents browsers from interpreting them as HTML code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this HTML escape tool free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — 100% free, with no signup or registration required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my code stored anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All processing happens locally in your browser. Your code is never sent to any server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I escape HTML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escape HTML whenever you display user input in a web page, insert text into HTML, or want to show code examples without the browser rendering them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it support numeric entities?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unescaping handles common named entities (&amp;, &lt;, &gt;, &quot;, &nbsp;, &#39;). Numeric entities like &#169; are also decoded automatically."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -56,6 +138,68 @@
             <div class="stat-box"><strong id="stat-lines">0</strong><span>Lines</span></div>
           </div>
         </div>
+
+        <!-- ============ SEO Content Section ============ -->
+
+        <section class="tool-content">
+          <h2>What is HTML escaping?</h2>
+          <p>HTML escaping is the process of converting special characters into HTML entities so they display as literal text instead of being interpreted as HTML code. For example, the character <code>&lt;</code> becomes <code>&amp;lt;</code>, and <code>&amp;</code> becomes <code>&amp;amp;</code>.</p>
+          <p>Unescaping does the reverse: it turns HTML entities back into their original characters. This is essential when you want to read code as human-readable text rather than as encoded markup.</p>
+
+          <h2>Characters we escape</h2>
+          <ul>
+            <li><code>&amp;</code> → <code>&amp;amp;</code></li>
+            <li><code>&lt;</code> → <code>&amp;lt;</code></li>
+            <li><code>&gt;</code> → <code>&amp;gt;</code></li>
+            <li><code>"</code> → <code>&amp;quot;</code></li>
+            <li><code>'</code> → <code>&amp;#39;</code></li>
+          </ul>
+
+          <h2>How to use it</h2>
+          <ol>
+            <li>Paste your HTML code or text into the box above.</li>
+            <li>Click <strong>Escape HTML</strong> to encode special characters, or <strong>Unescape HTML</strong> to decode entities.</li>
+            <li>The result appears instantly in the output box.</li>
+            <li>Click <strong>Copy</strong> to copy the result, or <strong>Clear</strong> to start over.</li>
+          </ol>
+
+          <h2>Why use our HTML escape tool?</h2>
+          <ul>
+            <li><strong>Instant</strong> — escapes or unescapes in one click</li>
+            <li><strong>Free</strong> — no signup, no limit</li>
+            <li><strong>Private</strong> — your code never leaves your browser</li>
+            <li><strong>Two-way</strong> — escape and unescape in the same tool</li>
+            <li><strong>Safe</strong> — prevents XSS when displaying user input</li>
+            <li><strong>Live stats</strong> — word, character, and line counts update automatically</li>
+          </ul>
+
+          <h2>When to use it</h2>
+          <ul>
+            <li><strong>Displaying code</strong> — show HTML examples without rendering them.</li>
+            <li><strong>User input</strong> — escape text before inserting into HTML to prevent XSS.</li>
+            <li><strong>Debugging</strong> — inspect escaped HTML to understand a page's structure.</li>
+            <li><strong>Email templates</strong> — ensure special characters display correctly.</li>
+            <li><strong>Data migration</strong> — clean HTML entities before importing content.</li>
+            <li><strong>CMS editing</strong> — fix double-escaped text after copy-paste.</li>
+          </ul>
+
+          <h2>FAQ</h2>
+
+          <h3>What does escaping HTML mean?</h3>
+          <p>Escaping converts special HTML characters like &lt; &gt; &amp; " ' into their safe entity form (&amp;lt; &amp;gt; &amp;amp; &amp;quot; &amp;#39;). This prevents browsers from interpreting them as HTML code.</p>
+
+          <h3>Is this HTML escape tool free?</h3>
+          <p>Yes — 100% free, with no signup or registration required.</p>
+
+          <h3>Is my code stored anywhere?</h3>
+          <p>No. All processing happens locally in your browser. Your code is never sent to any server.</p>
+
+          <h3>When should I escape HTML?</h3>
+          <p>Escape HTML whenever you display user input in a web page, insert text into HTML, or want to show code examples without the browser rendering them.</p>
+
+          <h3>Does it support numeric entities?</h3>
+          <p>Unescaping handles common named entities (&amp;amp;, &amp;lt;, &amp;gt;, &amp;quot;, &amp;nbsp;, &amp;#39;). Numeric entities like &amp;#169; are also decoded automatically.</p>
+        </section>
       </div>
     </main>
 

@@ -1,11 +1,11 @@
 /* ============================================
-   TextKit — Tool Pages (Full Page Layout)
+   TextKit — Tool Pages (Full Screen Space)
    ============================================ */
 
-/* ===== Tool Header ===== */
+/* 1. الهيدر (الشعار، العنوان، والوصف) يبقى كما هو */
 .tool-header {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 10px;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .tool-header h1 {
-  font-size: clamp(28px, 4vw, 36px);
+  font-size: clamp(28px, 4vw, 40px);
   line-height: 1.2;
   letter-spacing: -0.05em;
   font-weight: 800;
@@ -27,49 +27,52 @@
 }
 
 .tool-header p {
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 auto;
   font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
 }
 
-/* ===== Tool Container ===== */
+/* 2. حاوية الأداة */
 .tool-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 10px 24px 180px; /* مساحة سفلية كبيرة للأزرار العائمة والعدادات */
+  /* مساحة سفلية كبيرة جداً لكي لا تختفي الأزرار العائمة خلف الشرح */
+  padding: 0px 24px 150px; 
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 150px);
+  min-height: 80vh; /* إجبار الحاوية على التمدد */
 }
 
-/* ===== Tool Panel (بدون صندوق - صفحة كاملة) ===== */
+/* 3. تحويل الصندوق الأبيض إلى صفحة شفافة كبيرة */
 .tool-panel {
-  background: transparent;
-  border: none;
+  background: transparent !important; /* إلغاء لون الصندوق */
+  border: none !important; /* إلغاء الحدود */
   border-radius: 0;
-  padding: 0;
+  padding: 0 !important;
+  margin-bottom: 10px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* ===== Textarea ===== */
+/* 4. تكبير مساحة الكتابة لأقصى حد */
 .tool-textarea {
   width: 100%;
-  flex: 1;
-  min-height: 300px;
-  padding: 10px 0;
-  border: none;
+  flex: 1; /* التمدد لملء الشاشة */
+  min-height: 400px !important; /* ارتفاع أدنى كبير جداً */
+  padding: 10px 0 !important; /* مساحة داخلية صغيرة */
+  border: none !important; /* إلغاء الحدود */
   border-radius: 0;
   font-family: inherit;
   font-size: 18px;
   line-height: 1.8;
   color: var(--ink);
-  background: transparent;
+  background: transparent !important; /* إلغاء الخلفية */
   resize: none;
   outline: none;
+  box-shadow: none;
 }
 
 .tool-textarea::placeholder {
@@ -77,18 +80,25 @@
   opacity: 0.6;
 }
 
+/* إزالة تأثير التركيز لأن الصندوق لم يعد موجوداً */
 .tool-textarea:focus {
-  border: none;
-  background: transparent;
+  border: none !important;
+  background: transparent !important;
 }
 
 body.dark-mode .tool-textarea {
-  background: transparent;
+  background: transparent !important;
   color: var(--ink);
 }
 
-/* ===== الشريط العائم (الأزرار + العدادات) ===== */
-.tool-floating-bar {
+/* 5. تحويل الأزرار والعدادات إلى شريط عائم في الأسفل */
+/* نقوم باستهداف الصندوق الذي يحمل الكلاس tool-actions (الذي يحتوي الأزرار والعدادات) */
+.tool-actions, .tool-stats {
+  /* لا نغير مكانهم في الـ HTML، ولكن نجعلهم يطفون في الأسفل */
+}
+
+/* الحاوية الشاملة للأزرار والعدادات (إذا كانت في نفس الـ div) */
+.tool-panel > div:last-child {
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -99,18 +109,19 @@ body.dark-mode .tool-textarea {
   background: var(--paper);
   padding: 12px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   border: 1px solid var(--line);
   z-index: 100;
   width: calc(100% - 32px);
   max-width: 500px;
 }
 
-/* الأزرار */
+/* تصميم الأزرار داخل الشريط العائم */
 .tool-actions {
   display: flex;
   gap: 8px;
   width: 100%;
+  margin-top: 0 !important; /* إلغاء المسافة العلوية القديمة */
 }
 
 .btn {
@@ -129,7 +140,7 @@ body.dark-mode .tool-textarea {
 }
 
 .btn-primary {
-  flex: 1; /* الزر الأزرق يأخذ مساحة أكبر */
+  flex: 1;
   background: var(--accent);
   color: #fff;
 }
@@ -150,12 +161,13 @@ body.dark-mode .tool-textarea {
   color: var(--accent);
 }
 
-/* العدادات (تحت الأزرار) */
+/* تصميم العدادات داخل الشريط العائم */
 .tool-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   width: 100%;
+  margin-top: 0 !important;
 }
 
 .stat-box {
@@ -182,88 +194,18 @@ body.dark-mode .tool-textarea {
   font-weight: 700;
 }
 
-/* ===== Copy Feedback ===== */
-.copy-feedback {
-  display: inline-block;
-  margin-left: 10px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #16a34a;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.copy-feedback.show {
-  opacity: 1;
-}
-
-/* ===== Back Link ===== */
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--muted);
-  margin-bottom: 10px;
-  transition: 0.2s;
-}
-
-.back-link:hover {
-  color: var(--accent);
-}
-
-/* ===== Options (checkboxes) ===== */
-.tool-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.option-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.option-row:hover {
-  border-color: var(--accent);
-}
-
-.option-row input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--accent);
-  cursor: pointer;
-}
-
-.option-row label {
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  flex: 1;
-}
-
-/* ===== Responsive ===== */
+/* 6. تعديلات الجوال */
 @media (max-width: 768px) {
   .tool-container {
-    padding: 10px 16px 180px;
+    padding: 0px 16px 180px;
   }
   .tool-textarea {
     font-size: 16px;
-    min-height: 250px;
+    min-height: 300px !important;
   }
-  .tool-floating-bar {
+  .tool-panel > div:last-child {
     bottom: 12px;
     padding: 10px;
-    border-radius: 16px;
   }
   .btn {
     padding: 10px 12px;
@@ -271,11 +213,12 @@ body.dark-mode .tool-textarea {
   }
 }
 
-/* ===== SEO Content ===== */
+/* ===== محتوى الشرح (SEO) ===== */
+/* نتركه كما هو، ولكن نضيف مساحة سفلية لكي لا تغطيه الأزرار العائمة */
 .tool-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 24px 120px; /* مساحة إضافية لعدم تداخل الأزرار مع النص */
+  padding: 40px 24px 120px;
 }
 
 .tool-content h2 {
@@ -311,4 +254,15 @@ body.dark-mode .tool-textarea {
 .tool-content strong {
   color: var(--ink);
   font-weight: 700;
-   }
+}
+
+/* الحفاظ على تصميم الخيارات (checkboxes) كما هو */
+.tool-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.option-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; cursor: pointer; transition: 0.2s; }
+.option-row:hover { border-color: var(--accent); }
+.option-row input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+.option-row label { font-size: 14px; font-weight: 600; cursor: pointer; flex: 1; }
+.copy-feedback { display: inline-block; margin-left: 10px; font-size: 13px; font-weight: 700; color: #16a34a; opacity: 0; transition: 0.3s; }
+.copy-feedback.show { opacity: 1; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 20px; transition: 0.2s; }
+.back-link:hover { color: var(--accent); }

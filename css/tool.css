@@ -1,24 +1,25 @@
 /* ============================================
-   TextKit — Tool Pages
+   TextKit — Tool Pages (Full Page Layout)
    ============================================ */
 
 /* ===== Tool Header ===== */
 .tool-header {
   text-align: center;
-  padding-top: 50px;
-  padding-bottom: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .tool-header .eyebrow {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .tool-header h1 {
-  font-size: clamp(32px, 4.5vw, 48px);
-  line-height: 1.1;
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1.2;
   letter-spacing: -0.05em;
   font-weight: 800;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
+  color: var(--ink);
 }
 
 .tool-header h1 span {
@@ -37,51 +38,79 @@
 .tool-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px 24px 80px;
+  padding: 10px 24px 180px; /* مساحة سفلية كبيرة للأزرار العائمة والعدادات */
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 150px);
 }
 
-/* ===== Tool Card ===== */
+/* ===== Tool Panel (بدون صندوق - صفحة كاملة) ===== */
 .tool-panel {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 28px;
-  margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== Textarea ===== */
 .tool-textarea {
   width: 100%;
-  min-height: 220px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  font-family: 'Inter', 'Cairo', sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
+  flex: 1;
+  min-height: 300px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 1.8;
   color: var(--ink);
-  background: var(--cream);
-  resize: vertical;
+  background: transparent;
+  resize: none;
   outline: none;
-  transition: 0.2s;
+}
+
+.tool-textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
 }
 
 .tool-textarea:focus {
-  border-color: var(--accent);
-  background: var(--paper);
+  border: none;
+  background: transparent;
 }
 
 body.dark-mode .tool-textarea {
-  background: #0d1420;
+  background: transparent;
   color: var(--ink);
 }
 
-/* ===== Buttons ===== */
+/* ===== الشريط العائم (الأزرار + العدادات) ===== */
+.tool-floating-bar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--paper);
+  padding: 12px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid var(--line);
+  z-index: 100;
+  width: calc(100% - 32px);
+  max-width: 500px;
+}
+
+/* الأزرار */
 .tool-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 8px;
+  width: 100%;
 }
 
 .btn {
@@ -89,8 +118,8 @@ body.dark-mode .tool-textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 22px;
-  border-radius: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 700;
@@ -100,6 +129,7 @@ body.dark-mode .tool-textarea {
 }
 
 .btn-primary {
+  flex: 1; /* الزر الأزرق يأخذ مساحة أكبر */
   background: var(--accent);
   color: #fff;
 }
@@ -120,76 +150,36 @@ body.dark-mode .tool-textarea {
   color: var(--accent);
 }
 
-/* ===== Stats ===== */
+/* العدادات (تحت الأزرار) */
 .tool-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
 }
 
 .stat-box {
   background: var(--cream);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 16px;
+  padding: 8px 4px;
   text-align: center;
 }
 
 .stat-box strong {
   display: block;
-  font-size: 26px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--accent);
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 6px;
+  line-height: 1.2;
+  margin-bottom: 2px;
 }
 
 .stat-box span {
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
   color: var(--muted);
   font-weight: 700;
-}
-
-/* ===== Options (checkboxes) ===== */
-.tool-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.option-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.option-row:hover {
-  border-color: var(--accent);
-}
-
-.option-row input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--accent);
-  cursor: pointer;
-}
-
-.option-row label {
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  flex: 1;
 }
 
 /* ===== Copy Feedback ===== */
@@ -215,7 +205,7 @@ body.dark-mode .tool-textarea {
   font-size: 13px;
   font-weight: 700;
   color: var(--muted);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   transition: 0.2s;
 }
 
@@ -223,36 +213,69 @@ body.dark-mode .tool-textarea {
   color: var(--accent);
 }
 
+/* ===== Options (checkboxes) ===== */
+.tool-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option-row:hover {
+  border-color: var(--accent);
+}
+
+.option-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.option-row label {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .tool-container {
-    padding: 15px 16px 60px;
-  }
-  .tool-panel {
-    padding: 20px 18px;
-  }
-  .tool-header {
-    padding-top: 35px;
+    padding: 10px 16px 180px;
   }
   .tool-textarea {
-    min-height: 180px;
-    padding: 14px;
-    font-size: 14px;
+    font-size: 16px;
+    min-height: 250px;
+  }
+  .tool-floating-bar {
+    bottom: 12px;
+    padding: 10px;
+    border-radius: 16px;
   }
   .btn {
-    padding: 11px 18px;
+    padding: 10px 12px;
     font-size: 13px;
   }
-  .stat-box strong {
-    font-size: 22px;
-  }
-  }
+}
 
 /* ===== SEO Content ===== */
 .tool-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 40px 24px 120px; /* مساحة إضافية لعدم تداخل الأزرار مع النص */
 }
 
 .tool-content h2 {

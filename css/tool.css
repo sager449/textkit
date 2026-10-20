@@ -1,24 +1,29 @@
 /* ============================================
-   TextKit — Tool Pages (Perfect Fixed Layout)
+   TextKit — Tool Pages
    ============================================ */
 
-/* 1. الهيدر (يبقى كما هو) */
+/* ===== Tool Header ===== */
 .tool-header {
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.tool-header .eyebrow {
+  margin-bottom: 16px;
 }
 
 .tool-header h1 {
-  font-size: clamp(28px, 4vw, 36px);
-  line-height: 1.2;
+  font-size: clamp(32px, 4.5vw, 48px);
+  line-height: 1.1;
   letter-spacing: -0.05em;
   font-weight: 800;
-  margin: 0 0 10px;
-  color: var(--ink);
+  margin: 0 0 14px;
 }
 
-.tool-header h1 span { color: var(--accent); }
+.tool-header h1 span {
+  color: var(--accent);
+}
 
 .tool-header p {
   max-width: 560px;
@@ -28,87 +33,63 @@
   color: var(--muted);
 }
 
-/* 2. حاوية الأداة */
+/* ===== Tool Container ===== */
 .tool-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 10px 24px 220px; /* مساحة سفلية كبيرة للأزرار والعدادات */
-  display: flex;
-  flex-direction: column;
-  min-height: 80vh;
+  padding: 20px 24px 80px;
 }
 
-/* 3. تحويل الصندوق إلى صفحة شفافة كبيرة */
+/* ===== Tool Card ===== */
 .tool-panel {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0;
-  padding: 0 !important;
-  margin-bottom: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 20px;
 }
 
-/* 4. تكبير مساحة الكتابة */
+/* ===== Textarea ===== */
 .tool-textarea {
   width: 100%;
-  flex: 1;
-  min-height: 350px !important;
-  padding: 10px 0 !important;
-  border: none !important;
-  border-radius: 0;
-  font-family: inherit;
-  font-size: 18px;
-  line-height: 1.8;
+  min-height: 220px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: 'Inter', 'Cairo', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--ink);
-  background: transparent !important;
-  resize: none;
+  background: var(--cream);
+  resize: vertical;
   outline: none;
-  box-shadow: none;
-}
-
-.tool-textarea::placeholder {
-  color: var(--muted);
-  opacity: 0.6;
+  transition: 0.2s;
 }
 
 .tool-textarea:focus {
-  border: none !important;
-  background: transparent !important;
+  border-color: var(--accent);
+  background: var(--paper);
 }
 
-/* 
-============================================
-   السحر هنا: ضم الأزرار والعدادات في شريط واحد
-============================================
-*/
+body.dark-mode .tool-textarea {
+  background: #0d1420;
+  color: var(--ink);
+}
 
-/* الأزرار (تصعد للأعلى لتترك مكاناً للعدادات) */
+/* ===== Buttons ===== */
 .tool-actions {
-  position: fixed;
-  bottom: 100px; /* مكان الأزرار فوق العدادات */
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  gap: 8px;
-  background: var(--paper);
-  padding: 10px;
-  border-radius: 16px 16px 0 0; /* حواف علوية دائرية فقط */
-  border: 1px solid var(--line);
-  border-bottom: none;
-  box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
-  z-index: 100;
-  width: calc(100% - 32px);
-  max-width: 500px;
-  margin: 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 16px;
+  gap: 8px;
+  padding: 12px 22px;
   border-radius: 10px;
   font-family: inherit;
   font-size: 14px;
@@ -119,9 +100,13 @@
 }
 
 .btn-primary {
-  flex: 1;
   background: var(--accent);
   color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -130,87 +115,177 @@
   border: 1px solid var(--line);
 }
 
-/* العدادات (تجلس في الأسفل تماماً وتلتصق بالأزرار) */
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ===== Stats ===== */
 .tool-stats {
-  position: fixed;
-  bottom: 20px; /* أسفل الشاشة */
-  left: 50%;
-  transform: translateX(-50%);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  background: var(--paper);
-  padding: 10px;
-  border-radius: 0 0 16px 16px; /* حواف سفلية دائرية فقط */
-  border: 1px solid var(--line);
-  border-top: none;
-  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-  z-index: 99;
-  width: calc(100% - 32px);
-  max-width: 500px;
-  margin: 0;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .stat-box {
   background: var(--cream);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 8px 4px;
+  border-radius: 10px;
+  padding: 16px;
   text-align: center;
 }
 
 .stat-box strong {
   display: block;
-  font-size: 15px;
+  font-size: 26px;
   font-weight: 800;
   color: var(--accent);
-  line-height: 1.2;
-  margin-bottom: 2px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
 }
 
 .stat-box span {
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--muted);
   font-weight: 700;
 }
 
-/* 5. التجاوب مع الجوال */
-@media (max-width: 768px) {
-  .tool-container {
-    padding: 10px 16px 200px; /* مساحة سفلية للجوال */
-  }
-  .tool-textarea {
-    font-size: 16px;
-    min-height: 250px !important;
-  }
-  .tool-actions {
-    bottom: 90px;
-    padding: 8px;
-  }
-  .tool-stats {
-    bottom: 16px;
-    padding: 8px;
-  }
-  .btn {
-    padding: 10px 12px;
-    font-size: 13px;
-  }
+/* ===== Options (checkboxes) ===== */
+.tool-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
 }
 
-/* ===== محتوى الشرح (SEO) ===== */
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option-row:hover {
+  border-color: var(--accent);
+}
+
+.option-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.option-row label {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* ===== Copy Feedback ===== */
+.copy-feedback {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #16a34a;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.copy-feedback.show {
+  opacity: 1;
+}
+
+/* ===== Back Link ===== */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .tool-container {
+    padding: 15px 16px 60px;
+  }
+  .tool-panel {
+    padding: 20px 18px;
+  }
+  .tool-header {
+    padding-top: 35px;
+  }
+  .tool-textarea {
+    min-height: 180px;
+    padding: 14px;
+    font-size: 14px;
+  }
+  .btn {
+    padding: 11px 18px;
+    font-size: 13px;
+  }
+  .stat-box strong {
+    font-size: 22px;
+  }
+  }
+
+/* ===== SEO Content ===== */
 .tool-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 24px 160px;
+  padding: 40px 24px 80px;
 }
 
-.tool-content h2 { font-size: 24px; font-weight: 700; margin: 40px 0 14px; color: var(--ink); }
-.tool-content p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 0 0 14px; }
+.tool-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 40px 0 14px;
+  color: var(--ink);
+}
 
-/* الحفاظ على تصميم الخيارات */
-.tool-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.option-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; cursor: pointer; transition: 0.2s; }
-.option-row:hover { border-color: var(--accent); }
-.option-row input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
-.option-row label { font-size: 14px; font-weight: 600; cursor: pointer; flex: 1; }
+.tool-content h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  color: var(--ink);
+}
+
+.tool-content p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.tool-content ol, .tool-content ul {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--muted);
+  padding-left: 22px;
+  margin: 0 0 14px;
+}
+
+.tool-content strong {
+  color: var(--ink);
+  font-weight: 700;
+   }

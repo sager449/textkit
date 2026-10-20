@@ -1,8 +1,8 @@
 /* ============================================
-   TextKit — Tool Pages (Fixed Layout)
+   TextKit — Tool Pages (Perfect Fixed Layout)
    ============================================ */
 
-/* 1. الهيدر */
+/* 1. الهيدر (يبقى كما هو) */
 .tool-header {
   text-align: center;
   padding-top: 20px;
@@ -32,13 +32,13 @@
 .tool-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 10px 24px 220px; /* مساحة سفلية كبيرة جداً لكي لا تغطي الأزرار النص */
+  padding: 10px 24px 220px; /* مساحة سفلية كبيرة للأزرار والعدادات */
   display: flex;
   flex-direction: column;
   min-height: 80vh;
 }
 
-/* 3. إلغاء الصندوق الأبيض (تحويله لصفحة شفافة) */
+/* 3. تحويل الصندوق إلى صفحة شفافة كبيرة */
 .tool-panel {
   background: transparent !important;
   border: none !important;
@@ -78,21 +78,26 @@
   background: transparent !important;
 }
 
-/* ============================================
-   5. إصلاح الأزرار (Remove, Copy, Clear)
-   ============================================ */
+/* 
+============================================
+   السحر هنا: ضم الأزرار والعدادات في شريط واحد
+============================================
+*/
+
+/* الأزرار (تصعد للأعلى لتترك مكاناً للعدادات) */
 .tool-actions {
   position: fixed;
-  bottom: 140px; /* رفع الأزرار للأعلى لتترك مساحة للعدادات تحتها */
+  bottom: 100px; /* مكان الأزرار فوق العدادات */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
   background: var(--paper);
   padding: 10px;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 16px 16px 0 0; /* حواف علوية دائرية فقط */
   border: 1px solid var(--line);
+  border-bottom: none;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
   z-index: 100;
   width: calc(100% - 32px);
   max-width: 500px;
@@ -114,12 +119,10 @@
 }
 
 .btn-primary {
-  flex: 1; /* الزر الأزرق يأخذ مساحة أكبر */
+  flex: 1;
   background: var(--accent);
   color: #fff;
 }
-
-.btn-primary:hover { background: var(--accent-dark); }
 
 .btn-secondary {
   background: var(--cream);
@@ -127,41 +130,38 @@
   border: 1px solid var(--line);
 }
 
-.btn-secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* ============================================
-   6. إصلاح العدادات (المربعات الأربعة)
-   ============================================ */
+/* العدادات (تجلس في الأسفل تماماً وتلتصق بالأزرار) */
 .tool-stats {
   position: fixed;
-  bottom: 20px; /* تثبيت العدادات في أسفل الشاشة تماماً */
+  bottom: 20px; /* أسفل الشاشة */
   left: 50%;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  background: transparent;
-  z-index: 100;
+  background: var(--paper);
+  padding: 10px;
+  border-radius: 0 0 16px 16px; /* حواف سفلية دائرية فقط */
+  border: 1px solid var(--line);
+  border-top: none;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+  z-index: 99;
   width: calc(100% - 32px);
   max-width: 500px;
   margin: 0;
 }
 
 .stat-box {
-  background: var(--paper);
+  background: var(--cream);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 10px 4px;
+  border-radius: 8px;
+  padding: 8px 4px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
 }
 
 .stat-box strong {
   display: block;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   color: var(--accent);
   line-height: 1.2;
@@ -175,53 +175,40 @@
   font-weight: 700;
 }
 
-/* 7. التجاوب مع الجوال */
+/* 5. التجاوب مع الجوال */
 @media (max-width: 768px) {
   .tool-container {
-    padding: 10px 16px 220px;
+    padding: 10px 16px 200px; /* مساحة سفلية للجوال */
   }
   .tool-textarea {
     font-size: 16px;
-    min-height: 300px !important;
+    min-height: 250px !important;
   }
   .tool-actions {
-    bottom: 120px;
+    bottom: 90px;
+    padding: 8px;
+  }
+  .tool-stats {
+    bottom: 16px;
     padding: 8px;
   }
   .btn {
     padding: 10px 12px;
     font-size: 13px;
   }
-  .stat-box strong {
-    font-size: 14px;
-  }
-  .stat-box span {
-    font-size: 9px;
-  }
 }
 
-/* ===== SEO Content ===== */
+/* ===== محتوى الشرح (SEO) ===== */
 .tool-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 24px 120px;
+  padding: 40px 24px 160px;
 }
 
-.tool-content h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 40px 0 14px;
-  color: var(--ink);
-}
+.tool-content h2 { font-size: 24px; font-weight: 700; margin: 40px 0 14px; color: var(--ink); }
+.tool-content p { font-size: 15px; line-height: 1.75; color: var(--muted); margin: 0 0 14px; }
 
-.tool-content p {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--muted);
-  margin: 0 0 14px;
-}
-
-/* الحفاظ على تصميم الخيارات (checkboxes) */
+/* الحفاظ على تصميم الخيارات */
 .tool-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
 .option-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; cursor: pointer; transition: 0.2s; }
 .option-row:hover { border-color: var(--accent); }
